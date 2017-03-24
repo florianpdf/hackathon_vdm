@@ -1,0 +1,8 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+vdm:
+    resource: "@VDMBundle/Resources/config/routing.yml"
+    prefix:   /
+

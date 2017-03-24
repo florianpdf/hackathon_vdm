@@ -1,0 +1,38 @@
+VDMBundle\Entity\Article:
+    type: entity
+    table: null
+    repositoryClass: VDMBundle\Repository\ArticleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+        datePost:
+            type: datetime
+            column: date_post
+
+    oneToOne:
+        picture:
+            targetEntity: VDMBundle\Entity\Picture
+            cascade: ['all']
+
+    manyToOne:
+        categorie:
+            targetEntity: VDMBundle\Entity\Categorie
+            inversedBy: article
+        user:
+            targetEntity: UserBundle\Entity\User
+
+    manyToMany:
+        users:
+            targetEntity: UserBundle\Entity\User
+            mappedBy: articles
+
+    lifecycleCallbacks: {  }

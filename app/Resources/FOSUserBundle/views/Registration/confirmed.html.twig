@@ -1,0 +1,20 @@
+{% extends "base_admin.html.twig" %}
+
+{% block content %}
+    <div class="container_custom">
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        // Your application has indicated there's an error
+        window.setTimeout(function(){
+
+            // Move to a new location or you can do something else
+            window.location.href = '{{ path('homepage') }}'
+
+        }, 2000);
+    </script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+<div class="container-fluid">
+
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'register-form fos_user_registration_register'}}) }}
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="firstName">Email</label>
+                {{ form_widget(form.email, {'attr': {'class': 'form-control'}} ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="firstName">Pseudo</label>
+                {{ form_widget(form.username, {'attr': {'class': 'form-control'}} ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="firstName">Mot de passe</label>
+                {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}} ) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="firstName">Verif mot de passe</label>
+                {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}} ) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <input class="btn btn-default regbutton" type="submit" value="Valider" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <a href="{{ path('homepage') }}" class="btn btn-default regbutton return">Retour à la page d'accueil</a>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>

@@ -1,0 +1,18 @@
+<?php
+
+namespace VDMBundle\Entity;
+
+/**
+ * Article
+ */
+class Article
+{
+
+    public function __construct()
+    {
+        $this->datePost = new \DateTime();
+    }
+
+    // Generated CODE
+
+}

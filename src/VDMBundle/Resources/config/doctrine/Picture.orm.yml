@@ -1,0 +1,23 @@
+VDMBundle\Entity\Picture:
+    type: entity
+    table: null
+    repositoryClass: VDMBundle\Repository\PictureRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        src:
+            type: string
+            length: 255
+        alt:
+            type: string
+            length: 255
+    lifecycleCallbacks:
+        prePersist: [ preUpload ]
+        preUpdate: [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate: [ upload ]
+        postRemove: [ removeUpload ]

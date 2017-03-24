@@ -1,0 +1,84 @@
+<?php
+
+namespace VDMBundle\Entity;
+
+/**
+ * Love
+ */
+class Love
+{
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \VDMBundle\Entity\Article
+     */
+    private $article;
+
+    /**
+     * @var \UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \VDMBundle\Entity\Article $article
+     *
+     * @return Love
+     */
+    public function setArticle(\VDMBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \VDMBundle\Entity\Article
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\User $user
+     *
+     * @return Love
+     */
+    public function setUser(\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

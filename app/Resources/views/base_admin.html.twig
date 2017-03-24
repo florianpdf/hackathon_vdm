@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}VDM au Camping! - Admin{% endblock %}</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="{{ asset('bundles/vdm/vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="{{ asset('bundles/vdm/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+        <!-- Theme CSS -->
+        <link rel="stylesheet" href="{{ asset('bundles/vdm/css/admin.css') }}">
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+        {% block content %}
+        {% endblock %}
+
+        <!-- Script -->
+        <script src="{{ asset('bundles/vdm/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/vdm/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/vdm/js/admin.js') }}"></script>
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>

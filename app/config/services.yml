@@ -1,0 +1,11 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services :
+#   app_core.facebook:
+#       # notre classe
+#       class: VDMBundle\Facebook\FacebookService
+#       #  on ajoute nos identifiants en paramètre
+#       arguments: ["%app_id%","%app_secret%","%page_id%","%token%"]

@@ -1,0 +1,7 @@
+VDMBundle\Entity\Picture:
+    properties:
+        file:
+            - File:
+                maxSize: 2M
+                mimeTypes: [image/*]
+                mimeTypesMessage: "Merci de proposer une image valide"

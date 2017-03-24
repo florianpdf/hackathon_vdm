@@ -1,0 +1,40 @@
+{% extends '@VDM/layout.html.twig' %}
+
+{% block content %}
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">{{ categorie.title }}</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container-flui">
+            <div class="row">
+                {% for article in categorie.article %}
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="row service-box">
+                            {#<i class="fa fa-4x fa-diamond text-primary sr-icons"></i>#}
+                            <h3>{{ article.title }}</h3>
+                            <p class="text-muted">{{ article.content }}</p>
+                            <p class="text-muted">{{ article.datePost|date('d-m-Y') }}</p>
+                            <a href="{{ path('like', { 'article': article.id, 'user': app.user.id }) }}">
+                                <i class="fa fa-2x fa-thumbs-o-up text-primary sr-icons" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="row">
+                                <a href="{{ path('_edit', { 'id': article.id }) }}">Editer</a>
+                                <a href="{{ path('_edit', { 'id': article.id }) }}">Supprimer</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <hr class="primary">
+
+{% endblock %}

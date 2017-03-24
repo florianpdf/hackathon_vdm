@@ -1,0 +1,16 @@
+homepage:
+    path: /
+    defaults: { _controller: "VDMBundle:Default:homepage" }
+
+vdmByCateg:
+    path: /categ/{id}
+    defaults: { _controller: "VDMBundle:Default:getVdmByCateg" }
+
+vdm:
+    resource: "@VDMBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+
+like:
+    path:     /like/{article}/{user}
+    defaults: { _controller: "VDMBundle:Default:like" }
+

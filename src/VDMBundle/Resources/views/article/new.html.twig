@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Article creation</h1>
+
+    {{ form_start(form) }}
+
+        <div>
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title) }}
+            {{ form_errors(form.title) }}
+        </div>
+        <div>
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content) }}
+            {{ form_errors(form.content) }}
+        </div>
+        <div>
+            {{ form_label(form.picture) }}
+            {{ form_widget(form.picture) }}
+            {{ form_errors(form.picture) }}
+        </div>
+        <div>
+            {{ form_label(form.categorie) }}
+            {{ form_widget(form.categorie) }}
+            {{ form_errors(form.categorie) }}
+        </div>
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

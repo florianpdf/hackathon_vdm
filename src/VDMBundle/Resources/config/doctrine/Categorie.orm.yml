@@ -1,0 +1,22 @@
+VDMBundle\Entity\Categorie:
+    type: entity
+    table: null
+    repositoryClass: VDMBundle\Repository\CategorieRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+
+    oneToMany:
+        article:
+            targetEntity: VDMBundle\Entity\Article
+            mappedBy: categorie
+
+
+    lifecycleCallbacks: {  }
