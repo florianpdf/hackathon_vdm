@@ -45,6 +45,12 @@
                                 </div>
 
                             {% else %}
+                                {% set like_button = true %}
+                                {% for user in article.users %}
+                                    {% if user.id == app.user.id %}
+                                        {% set like_button = false %}
+                                    {% endif %}
+                                {% endfor %}
                                 {% if like_button == false and like_button is defined %}
                                     <!-- Trigger the modal with a button -->
                                     <a data-toggle="modal" data-target="#myModal"><i class="fa fa-2x fa-thumbs-o-up pouce_green sr-icons" aria-hidden="true"></i></a>
