@@ -71,7 +71,7 @@
                                     </a>
                                 {% endif %}
                             {% endif %}
-                            Nb like: {{ nblike }}
+                            Nb like: {{ article.users|length }}
                         </div>
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="row">
