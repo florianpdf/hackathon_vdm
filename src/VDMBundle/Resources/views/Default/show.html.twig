@@ -27,7 +27,7 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="row">
                                 <a href="{{ path('_edit', { 'id': article.id }) }}">Editer</a>
-                                <a href="{{ path('_edit', { 'id': article.id }) }}">Supprimer</a>
+                                <a href="{{ path('_delete', { 'id': article.id }) }}">Supprimer</a>
                             </div>
                         {% endif %}
                     </div>

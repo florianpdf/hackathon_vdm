@@ -45,7 +45,7 @@ class ArticleController extends Controller
             $em->persist($article);
             $em->flush();
 
-            return $this->redirectToRoute('_show', array('id' => $article->getId()));
+            return $this->redirectToRoute('_index');
         }
 
         return $this->render('@VDM/article/new.html.twig', array(
@@ -55,73 +55,32 @@ class ArticleController extends Controller
     }
 
     /**
-     * Finds and displays a article entity.
-     *
-     */
-    public function showAction(Article $article)
-    {
-        $deleteForm = $this->createDeleteForm($article);
-
-        return $this->render('@VDM/article/show.html.twig', array(
-            'article' => $article,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
-    /**
      * Displays a form to edit an existing article entity.
      *
      */
     public function editAction(Request $request, Article $article)
     {
-        $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('VDMBundle\Form\ArticleType', $article);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('_edit', array('id' => $article->getId()));
+            return $this->redirectToRoute('_index');
         }
 
         return $this->render('@VDM/article/edit.html.twig', array(
             'article' => $article,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Deletes a article entity.
-     *
-     */
-    public function deleteAction(Request $request, Article $article)
-    {
-        $form = $this->createDeleteForm($article);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($article);
-            $em->flush();
-        }
-
+    public function deleteAction(Article $article){
+        $em = $this->getDoctrine()->getManager();
+        $image = $em->getRepository('VDMBundle:Picture')->findOneById($article->getPicture()->getId());
+        $em->remove($image);
+        $em->remove($article);
+        $em->flush();
         return $this->redirectToRoute('_index');
-    }
-
-    /**
-     * Creates a form to delete a article entity.
-     *
-     * @param Article $article The article entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Article $article)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('_delete', array('id' => $article->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 }

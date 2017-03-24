@@ -36,8 +36,8 @@
                                                 <p>Ohhhh ouiiii, viens chercher bonheur</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Se connecter</button>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">S'enregistrer</button>
+                                                <a href="{{ path('fos_user_security_login') }}" class="btn btn-default">Se connecter</a>
+                                                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default">S'enregistrer</a>
                                             </div>
                                         </div>
 
@@ -45,15 +45,38 @@
                                 </div>
 
                             {% else %}
-                                <a href="{{ path('like', { 'article': article.id, 'user': app.user.id }) }}">
-                                    <i class="fa fa-2x fa-thumbs-o-up text-primary sr-icons" aria-hidden="true"></i>
-                                </a>
+                                {% if like_button == false and like_button is defined %}
+                                    <!-- Trigger the modal with a button -->
+                                    <a data-toggle="modal" data-target="#myModal"><i class="fa fa-2x fa-thumbs-o-up pouce_green sr-icons" aria-hidden="true"></i></a>
+
+                                    <!-- Modal -->
+                                    <div id="myModal" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>On a voulu niker Patrick ????</p>
+                                                    <p>Tu as déja voté</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <a href="{{ path('like', { 'article': article.id, 'user': app.user.id }) }}">
+                                        <i class="fa fa-2x fa-thumbs-o-up pouce_red sr-icons" aria-hidden="true"></i>
+                                    </a>
+                                {% endif %}
                             {% endif %}
+                            Nb like: {{ nblike }}
                         </div>
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="row">
                                 <a href="{{ path('_edit', { 'id': article.id }) }}">Editer</a>
-                                <a href="{{ path('_edit', { 'id': article.id }) }}">Supprimer</a>
+                                <a href="{{ path('_delete', { 'id': article.id }) }}">Supprimer</a>
                             </div>
                         {% endif %}
                     </div>

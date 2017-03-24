@@ -19,7 +19,7 @@ class DefaultController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $em->flush();
-        return $this->redirectToRoute('_index');
+        return $this->redirectToRoute('homepage');
     }
 
     /**
@@ -28,16 +28,41 @@ class DefaultController extends Controller
      */
     public function homepageAction(){
         $em = $this->getDoctrine()->getManager();
+        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
 
         $articles = $em->getRepository('VDMBundle:Article')->findBy(
             array(),
             array(),
             4
         );
+        $id_like_user = array();
+        foreach ($articles as $article) {
+            foreach ($article->getUsers() as $user) {
+                $id_like_user[] = $user->getId();
+            }
+        }
+
+        $nbLike = count($id_like_user);
+
+        if ($currentUser != "anon."){
+            if (in_array($currentUser->getId(), $id_like_user)){
+                $like_button = false;
+            }
+            else{
+                $like_button = true;
+            }
+        }
+        else{
+            $like_button = true;
+        }
+
+
         $categs = $em->getRepository('VDMBundle:Categorie')->findAll();
         return $this->render('@VDM/Default/index.html.twig', array(
             'articles' => $articles,
-            'categories' => $categs
+            'categories' => $categs,
+            'like_button' => $like_button,
+            'nblike' => $nbLike
         ));
     }
 

@@ -3,11 +3,6 @@ _index:
     defaults: { _controller: "VDMBundle:Article:index" }
     methods:  GET
 
-_show:
-    path:     /{id}/show
-    defaults: { _controller: "VDMBundle:Article:show" }
-    methods:  GET
-
 _new:
     path:     /new
     defaults: { _controller: "VDMBundle:Article:new" }
@@ -21,4 +16,3 @@ _edit:
 _delete:
     path:     /{id}/delete
     defaults: { _controller: "VDMBundle:Article:delete" }
-    methods:  DELETE

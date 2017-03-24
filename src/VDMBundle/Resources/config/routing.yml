@@ -8,7 +8,7 @@ vdmByCateg:
 
 vdm:
     resource: "@VDMBundle/Resources/config/routing/article.yml"
-    prefix:   /article
+    prefix:   /admin/article
 
 like:
     path:     /like/{article}/{user}

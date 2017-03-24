@@ -6,6 +6,7 @@
 /* 2. Login form
 /* 3. Register form
 /* 4. Confirmed page
+/* 5. Show all vdm
 /*
 ===========================================
 */
@@ -19,9 +20,14 @@ body, html{
     background-color:#34515E;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 18px;
-
 }
 
+.title_section{
+    color: white;
+}
+label{
+    color: white;
+}
 /* 2. Login form*/
 .card-container.card {
     max-width: 350px;
@@ -227,4 +233,9 @@ body, html{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* 5. Show all vdm */
+#list_vdm_wrapper{
+    background-color: white;
 }

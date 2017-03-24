@@ -1,21 +1,34 @@
-{% extends 'base.html.twig' %}
+{% extends '@VDM/layout_admin.html.twig' %}
 
-{% block body %}
-    <h1>Article edit</h1>
+{% block content %}
+<div class="container">
+    <h1 class="text-center title_section">Edition de la VDM {{ article.title }}</h1>
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
+        <div>
+            {{ form_label(edit_form.title) }}
+            {{ form_widget(edit_form.title) }}
+            {{ form_errors(edit_form.title) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.content) }}
+            {{ form_widget(edit_form.content) }}
+            {{ form_errors(edit_form.content) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.picture.file) }}
+            {{ form_widget(edit_form.picture.file) }}
+            {{ form_errors(edit_form.picture.file) }}
+        </div>
+        <div>
+            {{ form_label(edit_form.categorie) }}
+            {{ form_widget(edit_form.categorie) }}
+            {{ form_errors(edit_form.categorie) }}
+        </div>
+
+        <input type="submit" class="btn btn-lg btn-primary btn-block btn-signin" value="Modifier" />
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+</div>
 {% endblock %}
