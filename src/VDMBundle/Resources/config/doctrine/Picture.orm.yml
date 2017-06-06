@@ -15,6 +15,7 @@ VDMBundle\Entity\Picture:
         alt:
             type: string
             length: 255
+
     lifecycleCallbacks:
         prePersist: [ preUpload ]
         preUpdate: [ preUpload ]

@@ -18,10 +18,13 @@ class ArticleController extends Controller
      */
     public function indexAction()
     {
+        // Connexion base de donnée
         $em = $this->getDoctrine()->getManager();
 
+        // Recupération de tous les articles
         $articles = $em->getRepository('VDMBundle:Article')->findAll();
 
+        // Renvoie de la vue
         return $this->render('@VDM/article/index.html.twig', array(
             'articles' => $articles,
         ));
@@ -33,7 +36,10 @@ class ArticleController extends Controller
      */
     public function newAction(Request $request)
     {
+        // Instantiation d'un objet Article
         $article = new Article();
+
+        // Création du formulaire
         $form = $this->createForm('VDMBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
 
