@@ -4,10 +4,6 @@ hackathon_1_2017
 # Content
 Premier hackathon élève promo 3 WCS sur le thème VDM au camping
 
-## Access
-1. /article ==> CRUD for create article
-2. /event ==> CRUD for create event
-
 #### Pré-requis: 
 composer ==> [Install Composer](https://getcomposer.org/doc/00-intro.md)
 
